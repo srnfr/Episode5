@@ -1,19 +1,16 @@
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy
 metadata:
-  name: denyone
+  name: loghttp
 spec:
-  order: 10
-  namespaceSelector: kubernetes.io/metadata.name not in {'rose'}
+  order: 15
   types:
     - Egress
   egress:    
-    - action: Deny
+    - action: Log
       protocol: TCP
       source: {}
       destination:
-        nets:
-        - 1.1.1.1/32
         ports: 
         - 80
         - 443

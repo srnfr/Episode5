@@ -1,0 +1,19 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: allowdns
+spec:
+  order: 1
+  types:
+    - Egress
+  egress:    
+    - action: Allow
+      protocol: TCP
+      destination:
+        ports: 
+        - 53
+    - action: Allow
+      protocol: UDP
+      destination:
+        ports: 
+        - 53
