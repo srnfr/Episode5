@@ -1,7 +1,7 @@
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy
 metadata:
-  name: deny23
+  name: gnp-deny23
 spec:
   order: 10
   namespaceSelector: kubernetes.io/metadata.name not in {'rose'}
