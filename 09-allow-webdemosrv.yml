@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allowwebdemosrv
+spec:
+  podSelector:
+    matchLabels:
+      run: echoserver
+  ingress:
+  - ports:
+    - protocol: TCP
+      port: 8080
+    - protocol: TCP
+      port: 1234
+    from:
+    - podSelector:
+        matchLabels:
+          run: echoserver
+    - podSelector:
+        matchLabels:
+          run: netshoot
+
