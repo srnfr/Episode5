@@ -1,7 +1,7 @@
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy
 metadata:
-  name: denyone
+  name: deny23
 spec:
   order: 10
   namespaceSelector: kubernetes.io/metadata.name not in {'rose'}
@@ -13,7 +13,7 @@ spec:
       source: {}
       destination:
         nets:
-        - 1.1.1.1/32
+        - 23.23.23.23/32
         ports: 
         - 80
         - 443
