@@ -1,0 +1,14 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: default-deny
+spec:
+  namespaceSelector: kubernetes.io/metadata.name not in  {'kube-system', 'calico-system', 'calico-apiserver', 'tigera-operator', 'calico-cloud', 'rose'}
+  types:
+    - Ingress
+    - Egress
+  egress:
+    - action: Allow
+      source: {}
+      destination:
+        namespaceSelector: kubernetes.io/metadata.name in  {'kube-system', 'calico-system', 'calico-apiserver', 'tigera-operator', 'calico-cloud'}

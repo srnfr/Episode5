@@ -1,0 +1,14 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: external-api-access
+spec:
+  order: 100
+  selector:
+    deny-internet-egress == "true"
+  types:
+    - Egress
+  egress:    
+    - action: Deny
+      destination:
+        selector: role == "youtube"

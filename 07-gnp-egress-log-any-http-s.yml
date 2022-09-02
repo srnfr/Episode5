@@ -1,0 +1,17 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: log-egress-any-http-s
+spec:
+  order: 15
+  namespaceSelector: kubernetes.io/metadata.name not in {'rose'} && ! kubernetes.io/metadata.name starts with 'kube-' && ! kubernetes.io/metadata.name starts with 'calico-' && ! kubernetes.io/metadata.name starts with 'tigera-'
+  types:
+    - Egress
+  egress:    
+    - action: Log
+      protocol: TCP
+      source: {}
+      destination:
+        ports: 
+        - 80
+        - 443              

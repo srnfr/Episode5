@@ -1,0 +1,22 @@
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: 243-pool
+spec:
+  cidr: 10.243.0.0/24
+  blockSize: 29
+  ipipMode: Always
+  natOutgoing: true
+  nodeSelector: !all()
+
+---
+apiVersion: projectcalico.org/v3
+kind: IPPool
+metadata:
+  name: 242-pool
+spec:
+  cidr: 10.242.0.0/24
+  blockSize: 29
+  ipipMode: Always
+  natOutgoing: true
+  nodeSelector: !all()

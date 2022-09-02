@@ -1,0 +1,13 @@
+apiVersion: projectcalico.org/v3
+kind: NetworkSet
+metadata:
+  name: networkset-api-access
+  labels:
+    role: youtube
+spec:
+  nets:
+  - 198.199.124.250/24
+  - 95.85.54.44/32
+  domains:
+  - youtube.com
+  - *.youtube.com
